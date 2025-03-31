@@ -24,8 +24,8 @@ Este projeto é um monitor de rede que utiliza o Nmap para escanear dispositivos
 1.  Clona o repositório:
 
     ```bash
-    git clone <URL_DO_REPOSITORIO>
-    cd <NOME_DO_REPOSITORIO>
+    git clone https://github.com/casousavng/Monitor_de_Rede_GPR1
+    cd Monitor_de_Rede_GPR1
     ```
 
 2.  Cria um ambiente virtual (recomendado):
