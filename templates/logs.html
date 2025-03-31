@@ -1,0 +1,34 @@
+{% include 'navbar.html' %}
+
+<div class="container mt-5 pt-5">
+    <h2>Histórico de Logs</h2>
+    <form method="GET" class="my-3">
+        <input type="text" name="search" placeholder="Insira o IP ou MAC" value="{{ search_query }}" class="form-control d-inline w-auto">
+        <button type="submit" class="btn btn-secondary">Pesquisar</button>
+    </form>
+    <br>
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>IP e MAC Address do Dispositivo</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for log in logs %}
+            <tr>
+                <td>{{ log[1] }}</td>
+                <td>{{ log[2] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between">
+        <!-- Botão Anterior: desabilitar se estamos na primeira página -->
+        <a href="{{ url_for('logs', page=page-1, search=search_query) }}" class="btn btn-secondary" {% if prev_disabled %}disabled{% endif %}>Anterior</a>
+    
+        <!-- Botão Próximo: desabilitar se estamos na última página ou se não há mais logs -->
+        <a href="{{ url_for('logs', page=page+1, search=search_query) }}" class="btn btn-secondary" {% if next_disabled %}disabled{% endif %}>Próximo</a>
+    </div>
+</div>

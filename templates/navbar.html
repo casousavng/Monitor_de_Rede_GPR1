@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Monitor de Rede" />
+    <meta name="keywords" content="monitor, rede, dispositivos, logs" />
+    <meta name="author" content="Carlos Sousa, Gabriel Sá e Matteo Robert" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Monitor de Rede</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap"
+      rel="stylesheet"
+    />
+    <meta http-equiv="refresh" content="30" />
+    <!-- Adicionando meta tag para responsividade -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      body {
+        background-image: url(/static/background.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+      .navbar-brand {
+        font-family: "Audiowide", sans-serif;
+        color: crimson;
+        font-size: 25px;
+        font-weight: 500;
+        font-style: normal;
+        font-variant: normal;
+        text-transform: none;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand">Monitor de Rede</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/devices">Dispositivos Conectados</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logs">Logs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/history">Histórico de Conexões</a>
+          </li>
+
+          <!-- Dropdown de Relatórios -->
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="relatoriosDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Relatórios
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="relatoriosDropdown">
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="{{ url_for('generate_full_report') }}"
+                  >Relatório Completo</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="{{ url_for('generate_devices_report') }}"
+                  >Relatório de Dispositivos</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="{{ url_for('generate_logs_report') }}"
+                  >Relatório de Logs</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="{{ url_for('generate_history_report') }}"
+                  >Relatório de Histórico</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- Botão de Logout alinhado à direita -->
+        <a class="btn btn-light" href="/logout">Sair</a>
+      </div>
+    </div>
+  </nav>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <!-- Script para apresentar o rodapé com update da pagina-->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var footer = document.createElement("footer");
+      footer.style.position = "fixed";
+      footer.style.bottom = "0";
+      footer.style.width = "100%";
+      footer.style.backgroundColor = "#f1f1f1";
+      footer.style.textAlign = "center";
+      footer.style.padding = "10px";
+      footer.style.fontSize = "14px";
+      footer.style.marginTop = "25px";
+      footer.innerHTML = "Última atualização: " + new Date().toLocaleString();
+      document.body.appendChild(footer);
+    });
+  </script>
+</html>

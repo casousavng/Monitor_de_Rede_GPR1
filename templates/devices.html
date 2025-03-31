@@ -1,0 +1,11 @@
+{% include 'navbar.html' %}
+
+<div class="container mt-5 pt-5">
+    <h2>Dispositivos Conectados</h2>
+    <table class="table table-striped">
+        <tr><th>ID</th><th>IP</th><th>MAC</th><th>Última vez visto</th></tr>
+        {% for device in devices %}
+        <tr><td>{{ device[0] }}</td><td>{{ device[1] }}</td><td>{{ device[2] }}</td><td>{{ device[3] }}</td></tr>
+        {% endfor %}
+    </table>
+</div>
